@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 from newsdb import result_to_view, print_output
 from flask import Flask, Markup, url_for, render_template
