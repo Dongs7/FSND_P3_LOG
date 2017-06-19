@@ -9,7 +9,7 @@ Log Analysis Project using python and PostgreSQL
 * Oracle Virtual Box
 * Flask
 * psycopg2
-* Twitter Bootstrap 
+* Twitter Bootstrap
 
 ## File/Folder Description
 [template] - folder contains html files
@@ -26,4 +26,4 @@ $ python news.py
 1. The program will generate the text output file first. This step might take a few seconds since it needs to fetch the results from the DB. Then, 'result.txt' will be created in the folder.
 
 2. After the first step, the program will start the server so the results from the DB can be displayed in the browser.
-Use 'localhost:8000'
+Use 'localhost port:8000'

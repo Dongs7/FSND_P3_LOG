@@ -4,7 +4,9 @@ from flask import Flask, Markup, url_for, render_template
 
 app = Flask(__name__)
 
+#  Create Output file
 print_output()
+
 
 @app.route('/', methods=['GET'])
 def main():

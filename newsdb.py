@@ -108,7 +108,7 @@ def result_to_view(number):
             content_2=row[1],
         )
 
-    # Append headers and replace inside placeholder generated content
+    #  Append headers and replace inside placeholder generated content
     rendered_content = RESULT_MAIN.format(
         fheader=header1,
         sheader=header2,
@@ -117,29 +117,42 @@ def result_to_view(number):
 
     return rendered_content
 
+
 def print_query(f, query, num):
+    """Write query results into the file."""
+
     if num == '1':
-        title = 'What are the most popular three articles of all time?\n'
-        last = ' views'
+        title = "What are the most popular three articles of all time?\n"
+        last = "views"
     elif num == '2':
-        title = 'Who are the most popular article authors of all time?\n'
-        last = ' views'
+        title = "Who are the most popular article authors of all time?\n"
+        last = " views"
     else:
-        title = 'On which days did more than 1% of requests lead to errors?\n'
-        last = ' %'
+        title = "On which days did more than 1% of requests lead to errors?\n"
+        last = " %"
 
     f.write('\n' + str(title) + '\n')
     for result in query:
-        f.write(str(result[0]) + ' ----------------- ' + str(result[1]) + last + ' \n')
+        f.write(str(result[0]) + ' ----------------- ' +
+                str(result[1]) + last + ' \n')
 
 
 def print_output():
-    f = open('result.txt','w')
+    """ Get query results and write them into the file
+    by calling print_query() """
+
+    #  Create or overwrite the output file
+    f = open('result.txt', 'w')
+
+    #  Get each query result and store them
     result1 = get_result(query1)
     result2 = get_result(query2)
     result3 = get_result(query3)
 
-    print_query(f,result1,'1')
-    print_query(f,result2,'2')
-    print_query(f,result3,'3')
+    #  Write each query result into the file
+    print_query(f, result1, '1')
+    print_query(f, result2, '2')
+    print_query(f, result3, '3')
+
+    #  Close the file
     f.close()
