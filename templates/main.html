@@ -1,0 +1,13 @@
+{% extends "layout/layout.html" %}
+{% block content %}
+<div class="container">
+  <h3 class="lead center">What are the most popular three articles of all time?</h3>
+  {{article}}
+
+  <h3 class="lead center">Who are the most popular article authors of all time?</h3>
+  {{author}}
+
+  <h3 class="lead center">On which days did more than 1% of requests lead to errors?</h3>
+  {{error_rate}}
+</div>
+{% endblock %}
