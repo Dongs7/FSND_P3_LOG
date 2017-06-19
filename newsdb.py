@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #   Database for News
 import psycopg2
 
@@ -54,10 +56,22 @@ COUNT(log.status)) > 1
 """
 
 
+def connection(DBNAME):
+    """Connect to the DB, then return a database connection"""
+    try:
+        db = psycopg2.connect(database=DBNAME)
+        c = db.cursor()
+        return db, c
+    except psycopg2.Error as e:
+        print("Unable to connect to database")
+
+        #  Exit the program if any errors occur
+        sys.exit(1)
+
+
 def get_result(query):
-    """ Connect to the DB and return the result from the provided query """
-    db = psycopg2.connect(database=DBNAME)
-    c = db.cursor()
+    """Execute query and return its result"""
+    db, c = connection(DBNAME)
     c.execute(query)
     result = c.fetchall()
     db.close()
@@ -75,6 +89,7 @@ RESULT_TD = """
 
 def result_to_view(number):
     """ This function returns query result in HTML format """
+
     content = ''
 
     #  If parameter is 1, then set the query and heading values
